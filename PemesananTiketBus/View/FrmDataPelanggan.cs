@@ -38,10 +38,10 @@ namespace PemesananTiketBus.View
 
             listDataPelanggan.Columns.Add("No.", 30, HorizontalAlignment.Center);
             listDataPelanggan.Columns.Add("ID", 60, HorizontalAlignment.Center);
-            listDataPelanggan.Columns.Add("Nama", 150, HorizontalAlignment.Left);
+            listDataPelanggan.Columns.Add("Nama", 150, HorizontalAlignment.Center);
             listDataPelanggan.Columns.Add("No_Tlp", 90, HorizontalAlignment.Center);
             listDataPelanggan.Columns.Add("Alamat", 100, HorizontalAlignment.Center);
-            listDataPelanggan.Columns.Add("Email", 135, HorizontalAlignment.Left);
+            listDataPelanggan.Columns.Add("Email", 135, HorizontalAlignment.Center);
         }
 
         // method untuk menampilkan semua data mahasiswa
