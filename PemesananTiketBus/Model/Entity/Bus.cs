@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PemesananTiketBus.Model.Entity
 {
+    // p info
     public class Bus
     {
         public string IDBus { get; set; }
