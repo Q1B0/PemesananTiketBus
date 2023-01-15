@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 using PemesananTiketBus.Model.Entity;
 using PemesananTiketBus.Controller;
-
-using PemesananTiketBus.Controller;
 namespace PemesananTiketBus.View
 {
     public partial class FrmLaporan : Form
@@ -64,7 +62,7 @@ namespace PemesananTiketBus.View
                 listLaporan.Items.Add(listItem);
             }
 
-            if(listOfPembayaran.Count==0) MessageBox.Show("Data Pelanggan tidak ditemukan", "Peringatan", MessageBoxButtons.OK,
+            if(listOfPembayaran.Count==0) MessageBox.Show("Data Pembayaran tidak ditemukan", "Peringatan", MessageBoxButtons.OK,
                        MessageBoxIcon.Exclamation);
         }
 
