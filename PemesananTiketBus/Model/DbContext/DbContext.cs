@@ -27,12 +27,10 @@ namespace PemesananTiketBus.Model.Context
 
             try // penggunaan blok try-catch untuk penanganan error
             {
-                // atur ulang lokasi database yang disesuaikan dengan
-                // lokasi database perpustakaan Anda
-                //string dbName = @"D:\21S1-INFORMATIKA  03\SEMESTER 3\PEMROGRAMAN LANJUT\Final Project\Database\PesanTiket.db";
+                // lokasi database perpustakaan
                 string dbName = Directory.GetCurrentDirectory() + @"\\Database\\PesanTiket.db";
                
-                // deklarasi variabel connectionString, ref: https://www.connectionstrings.com/
+                // deklarasi variabel connectionString
                 string connectionString = string.Format("Data Source={0};FailIfMissing=True", dbName);
 
                 conn = new SQLiteConnection(connectionString); // buat objek connection
