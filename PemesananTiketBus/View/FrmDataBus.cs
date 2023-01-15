@@ -28,14 +28,15 @@ namespace PemesananTiketBus.View
             controller = new BusController();
 
             InisialisasiListView();
-            LoadDataBus();
-            ResetForm();
+            LoadDataBus(); // panggil method untuk menampilkan data
+            ResetForm(); // panggil method reset
         }
 
         private void InisialisasiListView()
         {
             lvwDataBus.View = System.Windows.Forms.View.Details;
 
+            // buat colom untuk listview
             lvwDataBus.Columns.Add("No.", 35, HorizontalAlignment.Center);
             lvwDataBus.Columns.Add("ID", 75, HorizontalAlignment.Center);
             lvwDataBus.Columns.Add("Nama", 200, HorizontalAlignment.Left);
@@ -43,14 +44,14 @@ namespace PemesananTiketBus.View
             lvwDataBus.Columns.Add("Harga", 90, HorizontalAlignment.Center);
         }
 
-        // method untuk menampilkan semua data mahasiswa
+        // method untuk menampilkan semua data bus
         private void LoadDataBus()
         {
             // kosongkan listview
             listOfBus = controller.ReadAll();
             lvwDataBus.Items.Clear();
 
-            // ekstrak objek mhs dari collection
+            // ekstrak objek bus dari collection
             foreach (var bus in listOfBus)
             {
                 var noUrut = lvwDataBus.Items.Count + 1;
@@ -61,16 +62,16 @@ namespace PemesananTiketBus.View
                 item.SubItems.Add(bus.Rute);
                 item.SubItems.Add(bus.Harga.ToString());
 
-                // tampilkan data mhs ke listview
+                // tampilkan data bus ke listview
                 lvwDataBus.Items.Add(item);
             }
         }
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            // jika data baru, inisialisasi objek mahasiswa
+            // jika data baru, inisialisasi objek bus
             Bus bus = new Bus();
 
-            // set nilai property objek mahasiswa yg diambil dari TextBox
+            // set nilai property objek bus yg diambil dari TextBox
             bus.IDBus = textIDBus.Text;
             bus.Nama = textNamaBus.Text;
             bus.Rute = textRuteBus.Text;
@@ -82,7 +83,6 @@ namespace PemesananTiketBus.View
             {
 
             }
-            
 
             int result = 0;
 
@@ -91,10 +91,9 @@ namespace PemesananTiketBus.View
 
             if (result > 0) // tambah data berhasil
             {
-                LoadDataBus();// panggil event OnCreate
+                LoadDataBus();// panggil method untuk menampilkan data bus jika data berhasil ditambahkan 
 
                 // reset form input, utk persiapan input data berikutnya
-
                 btnReset.PerformClick();
             }
             
@@ -107,7 +106,7 @@ namespace PemesananTiketBus.View
             {
                 Bus bus = new Bus();
 
-                // set nilai property objek mahasiswa yg diambil dari TextBox
+                // set nilai property objek bus yg diambil dari TextBox
                 bus.IDBus = textIDBus.Text;
                 bus.Nama = textNamaBus.Text;
                 bus.Rute = textRuteBus.Text;
@@ -120,10 +119,9 @@ namespace PemesananTiketBus.View
 
                 if (result > 0) // tambah data berhasil
                 {
-                    LoadDataBus();// panggil event OnCreate
+                    LoadDataBus();// panggil method untuk menampilkan data bus jika data berhasil ditambahkan
 
                     // reset form input, utk persiapan input data berikutnya
-
                     btnReset.PerformClick();
                 }
             }
@@ -143,13 +141,14 @@ namespace PemesananTiketBus.View
 
                 if (konfirmasi == DialogResult.Yes)
                 {
-                    // ambil objek mhs yang mau dihapus dari collection
+                    // ambil objek bus yang mau dihapus dari collection
                     Bus bus = listOfBus[lvwDataBus.SelectedIndices[0]];
 
                     // panggil operasi CRUD
                     var result = controller.Delete(bus);
                     if (result > 0) LoadDataBus();
 
+                    // reset form input, utk persiapan input data berikutnya
                     btnReset.PerformClick();
                 }
             }
@@ -169,13 +168,13 @@ namespace PemesananTiketBus.View
             textRuteBus.Text = lvwDataBus.SelectedItems[0].SubItems[3].Text;
             textHarga.Text = lvwDataBus.SelectedItems[0].SubItems[4].Text;
 
-            btnHapus.Enabled = true;
-            btnUpdate.Enabled = true;
+            btnHapus.Enabled = true; // enable button Hapus saat data dalam listview dipilih
+            btnUpdate.Enabled = true; // enable button Update saat data dalam listview dipilih
         }
 
+        // method untuk reset Textbox untuk pengisian selanjutnya
         private void ResetForm()
         {
-
             textIDBus.Enabled = true;
             textIDBus.Clear();
             textNamaBus.Clear();
@@ -183,12 +182,13 @@ namespace PemesananTiketBus.View
             textHarga.Clear();
 
             textIDBus.Focus();
-            btnHapus.Enabled = false;
-            btnUpdate.Enabled = false;
+            btnHapus.Enabled = false; // disable button Hapus
+            btnUpdate.Enabled = false; // disable button Update
         }
+
         private void btnReset_Click(object sender, EventArgs e)
         {
-            ResetForm();
+            ResetForm(); // panggil method reset
         }
     }
 }
