@@ -27,7 +27,7 @@ namespace PemesananTiketBus.Model.Context
 
             try // penggunaan blok try-catch untuk penanganan error
             {
-                // lokasi database perpustakaan
+                // lokasi database PesanTiket
                 string dbName = Directory.GetCurrentDirectory() + @"\\Database\\PesanTiket.db";
                
                 // deklarasi variabel connectionString
