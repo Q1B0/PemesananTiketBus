@@ -17,7 +17,7 @@ namespace PemesananTiketBus.Controller
         {
             int result = 0;
 
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(bus.IDBus))
             {
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
@@ -33,14 +33,14 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
-            // cek angkatan yang diinputkan tidak boleh kosong
+            // cek rute yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(bus.Rute))
             {
                 MessageBox.Show("Rute harus diisi !!!", "Peringatan",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
-
+            
             if (bus.Harga == 0)
             {
                 MessageBox.Show("Harga harus diisi !!!", "Peringatan",
@@ -75,7 +75,7 @@ namespace PemesananTiketBus.Controller
         {
             int result = 0;
 
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(bus.IDBus))
             {
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
@@ -91,7 +91,7 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
-            // cek angkatan yang diinputkan tidak boleh kosong
+            // cek rute yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(bus.Rute))
             {
                 MessageBox.Show("Rute harus diisi !!!", "Peringatan",
@@ -133,7 +133,7 @@ namespace PemesananTiketBus.Controller
         {
             int result = 0;
 
-            // cek nilai npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(bus.IDBus))
             {
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
