@@ -80,15 +80,13 @@ namespace PemesananTiketBus.View
             // 
             // listDataPelanggan
             // 
-            this.listDataPelanggan.FullRowSelect = true;
-            this.listDataPelanggan.GridLines = true;
             this.listDataPelanggan.HideSelection = false;
             this.listDataPelanggan.Location = new System.Drawing.Point(0, 19);
             this.listDataPelanggan.Name = "listDataPelanggan";
             this.listDataPelanggan.Size = new System.Drawing.Size(532, 202);
             this.listDataPelanggan.TabIndex = 0;
             this.listDataPelanggan.UseCompatibleStateImageBehavior = false;
-            this.listDataPelanggan.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listDataPelanggan_MouseClick);
+            this.listDataPelanggan.SelectedIndexChanged += new System.EventHandler(this.listDataPelanggan_SelectedIndexChanged);
             // 
             // textEmail
             // 

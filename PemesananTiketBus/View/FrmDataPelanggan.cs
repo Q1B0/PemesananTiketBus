@@ -20,13 +20,11 @@ namespace PemesananTiketBus.View
 
         private List<Pelanggan> listOfPelanggan = new List<Pelanggan>();
 
+        private Pelanggan pelanggan = new Pelanggan();
+
         public FrmDataPelanggan()
         {
             InitializeComponent();
-
-            // membuat objek controller
-            controller = new PelangganController();
-
             InisialisasiListView();
             LoadDataPelanggan();
             ResetForm();
@@ -35,6 +33,8 @@ namespace PemesananTiketBus.View
         private void InisialisasiListView()
         {
             listDataPelanggan.View = System.Windows.Forms.View.Details;
+            listDataPelanggan.FullRowSelect = true;
+            listDataPelanggan.GridLines = true;
 
             listDataPelanggan.Columns.Add("No.", 30, HorizontalAlignment.Center);
             listDataPelanggan.Columns.Add("ID", 60, HorizontalAlignment.Center);
@@ -70,9 +70,6 @@ namespace PemesananTiketBus.View
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            // jika data baru, inisialisasi objek mahasiswa
-            Pelanggan pelanggan = new Pelanggan();
-
             // set nilai property objek mahasiswa yg diambil dari TextBox
             pelanggan.IdPelanggan = textIDPelanggan.Text;
             pelanggan.Nama = textNama.Text;
@@ -99,9 +96,6 @@ namespace PemesananTiketBus.View
         {
             if (listDataPelanggan.SelectedItems.Count > 0)
             {
-                // jika data baru, inisialisasi objek mahasiswa
-                Pelanggan pelanggan = new Pelanggan();
-
                 // set nilai property objek mahasiswa yg diambil dari TextBox
                 pelanggan.IdPelanggan = textIDPelanggan.Text;
                 pelanggan.Nama = textNama.Text;
@@ -157,16 +151,21 @@ namespace PemesananTiketBus.View
             }
         }
 
-        private void listDataPelanggan_MouseClick(object sender, MouseEventArgs e)
+        private void listDataPelanggan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textIDPelanggan.Text = listDataPelanggan.SelectedItems[0].SubItems[1].Text;
-            textIDPelanggan.Enabled = false;
-            textNama.Text = listDataPelanggan.SelectedItems[0].SubItems[2].Text;
-            textNoTelp.Text = listDataPelanggan.SelectedItems[0].SubItems[3].Text;
-            textAlamat.Text = listDataPelanggan.SelectedItems[0].SubItems[4].Text;
-            textEmail.Text = listDataPelanggan.SelectedItems[0].SubItems[5].Text;
-            btnDelete.Enabled = true;
-            btnUpdate.Enabled = true;
+            if (listDataPelanggan.SelectedIndices.Count > 0)
+            {
+                pelanggan = listOfPelanggan[listDataPelanggan.SelectedIndices[0]];
+                textIDPelanggan.Text = pelanggan.IdPelanggan;
+                textIDPelanggan.Enabled = false;
+                textNama.Text = pelanggan.Nama;
+                textNoTelp.Text = pelanggan.No_tlp;
+                textAlamat.Text = pelanggan.Alamat;
+                textEmail.Text = pelanggan.Email;
+
+                btnDelete.Enabled = true; // enable button Hapus saat data dalam listview dipilih
+                btnUpdate.Enabled = true; // enable button Update saat data dalam listview dipilih
+            }
         }
 
         private void ResetForm()
