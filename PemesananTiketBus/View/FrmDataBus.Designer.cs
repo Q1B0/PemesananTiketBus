@@ -78,8 +78,6 @@ namespace PemesananTiketBus.View
             // 
             // lvwDataBus
             // 
-            this.lvwDataBus.FullRowSelect = true;
-            this.lvwDataBus.GridLines = true;
             this.lvwDataBus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwDataBus.HideSelection = false;
             this.lvwDataBus.Location = new System.Drawing.Point(0, 19);
@@ -87,7 +85,7 @@ namespace PemesananTiketBus.View
             this.lvwDataBus.Size = new System.Drawing.Size(532, 211);
             this.lvwDataBus.TabIndex = 0;
             this.lvwDataBus.UseCompatibleStateImageBehavior = false;
-            this.lvwDataBus.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvwDataBus_MouseClick);
+            this.lvwDataBus.SelectedIndexChanged += new System.EventHandler(this.lvwDataBus_SelectedIndexChanged);
             // 
             // textHarga
             // 

@@ -20,13 +20,11 @@ namespace PemesananTiketBus.View
 
         private List<Bus> listOfBus = new List<Bus>();
 
+        private Bus bus = new Bus();
+
         public FrmDataBus()
         {
             InitializeComponent();
-
-            // membuat objek controller
-            controller = new BusController();
-
             InisialisasiListView();
             LoadDataBus(); // panggil method untuk menampilkan data
             ResetForm(); // panggil method reset
@@ -35,6 +33,8 @@ namespace PemesananTiketBus.View
         private void InisialisasiListView()
         {
             lvwDataBus.View = System.Windows.Forms.View.Details;
+            lvwDataBus.FullRowSelect = true;
+            lvwDataBus.GridLines = true;
 
             // buat colom untuk listview
             lvwDataBus.Columns.Add("No.", 35, HorizontalAlignment.Center);
@@ -68,9 +68,6 @@ namespace PemesananTiketBus.View
         }
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            // jika data baru, inisialisasi objek bus
-            Bus bus = new Bus();
-
             // set nilai property objek bus yg diambil dari TextBox
             bus.IDBus = textIDBus.Text;
             bus.Nama = textNamaBus.Text;
@@ -104,8 +101,6 @@ namespace PemesananTiketBus.View
 
             if (lvwDataBus.SelectedItems.Count > 0)
             {
-                Bus bus = new Bus();
-
                 // set nilai property objek bus yg diambil dari TextBox
                 bus.IDBus = textIDBus.Text;
                 bus.Nama = textNamaBus.Text;
@@ -160,16 +155,20 @@ namespace PemesananTiketBus.View
             }
         }
 
-        private void lvwDataBus_MouseClick(object sender, MouseEventArgs e)
+        private void lvwDataBus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textIDBus.Text = lvwDataBus.SelectedItems[0].SubItems[1].Text;
-            textIDBus.Enabled = false;
-            textNamaBus.Text = lvwDataBus.SelectedItems[0].SubItems[2].Text;
-            textRuteBus.Text = lvwDataBus.SelectedItems[0].SubItems[3].Text;
-            textHarga.Text = lvwDataBus.SelectedItems[0].SubItems[4].Text;
+            if (lvwDataBus.SelectedIndices.Count > 0)
+            {
+                bus = listOfBus[lvwDataBus.SelectedIndices[0]];
+                textIDBus.Text = bus.IDBus;
+                textIDBus.Enabled = false;
+                textNamaBus.Text = bus.Nama;
+                textRuteBus.Text = bus.Rute;
+                textHarga.Text = bus.Harga.ToString();
 
-            btnHapus.Enabled = true; // enable button Hapus saat data dalam listview dipilih
-            btnUpdate.Enabled = true; // enable button Update saat data dalam listview dipilih
+                btnHapus.Enabled = true; // enable button Hapus saat data dalam listview dipilih
+                btnUpdate.Enabled = true; // enable button Update saat data dalam listview dipilih
+            }
         }
 
         // method untuk reset Textbox untuk pengisian selanjutnya
