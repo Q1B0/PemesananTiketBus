@@ -29,6 +29,7 @@ namespace PemesananTiketBus.View
             LoadData();
         }
 
+        
         private void btnCariIDTiket_Click(object sender, EventArgs e)
         {
             try
@@ -50,6 +51,7 @@ namespace PemesananTiketBus.View
             }
         }
 
+        // load data dan tampilkan ke listview
         private void LoadData()
         {
             listPembayaran.Items.Clear();
@@ -91,6 +93,7 @@ namespace PemesananTiketBus.View
             LoadData();
         }
 
+        // button untuk pergi ke form laporan
         private void btnLaporan_Click(object sender, EventArgs e)
         {
             FrmLaporan frm = new FrmLaporan();

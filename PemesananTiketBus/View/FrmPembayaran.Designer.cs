@@ -201,7 +201,7 @@ namespace PemesananTiketBus.View
             this.Controls.Add(this.textIDBayar);
             this.Controls.Add(this.label1);
             this.Name = "FrmPembayaran";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Pembayaran";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

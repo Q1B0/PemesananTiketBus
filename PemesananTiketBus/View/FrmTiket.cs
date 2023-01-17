@@ -27,6 +27,8 @@ namespace PemesananTiketBus.View
             LoadData();
             Reset();
         }
+
+        // load data dan tampilkan ke listview
         private void LoadData()
         {
             listTiket.Items.Clear();
@@ -47,7 +49,6 @@ namespace PemesananTiketBus.View
         }
         private void InitListView()
         {
-
             listTiket.View = System.Windows.Forms.View.Details;
             listTiket.FullRowSelect = true;
             listTiket.GridLines = true;
@@ -61,6 +62,7 @@ namespace PemesananTiketBus.View
             listTiket.Columns.Add("Tanggal Berangkat", 130, HorizontalAlignment.Center);
         }
 
+        // button cari pelanggan berdasarkan id pelanggan
         private void btnCari_Click(object sender, EventArgs e)
         {
             try
@@ -83,6 +85,7 @@ namespace PemesananTiketBus.View
             }
         }
 
+        // button cari bus berdasarkan id pelanggan
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -140,6 +143,7 @@ namespace PemesananTiketBus.View
             }
         }
 
+        // method untuk melakukan kalkulasi harga total sesuai jumlah tiket yang di input
         private void CalcHargaTotal()
         {
             try
@@ -160,6 +164,7 @@ namespace PemesananTiketBus.View
             CalcHargaTotal();
         }
 
+        // pilih data dari listview dan munculkan ke textbox
         private void listTiket_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listTiket.SelectedIndices.Count>0)
@@ -189,7 +194,7 @@ namespace PemesananTiketBus.View
 
                 if (konfirmasi == DialogResult.Yes)
                 {
-                    // ambil objek mhs yang mau dihapus dari collection
+                    // ambil data tiket yang mau dihapus dari collection
                     Tiket tiket = listOfTiket[listTiket.SelectedIndices[0]];
 
                     // panggil operasi CRUD
@@ -206,7 +211,8 @@ namespace PemesananTiketBus.View
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
+        
+        // method untuk reset textbox agar kosong
         private void Reset()
         {
             textIDTiket.Clear();
@@ -227,7 +233,7 @@ namespace PemesananTiketBus.View
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            Reset();
+            Reset(); // panggil method reset
         }
     }
 }

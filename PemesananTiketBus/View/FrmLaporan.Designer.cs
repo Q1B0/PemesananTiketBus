@@ -141,7 +141,7 @@ namespace PemesananTiketBus.View
             this.Controls.Add(this.radioButtonSemua);
             this.Controls.Add(this.label2);
             this.Name = "FrmLaporan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Laporan Pembayaran";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

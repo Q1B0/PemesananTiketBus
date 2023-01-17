@@ -214,7 +214,7 @@ namespace PemesananTiketBus.View
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmDataPelanggan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Data Pelanggan";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

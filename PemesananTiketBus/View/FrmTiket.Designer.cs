@@ -357,7 +357,7 @@ namespace PemesananTiketBus.View
             this.Controls.Add(this.textIDTiket);
             this.Controls.Add(this.label1);
             this.Name = "FrmTiket";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tiket";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

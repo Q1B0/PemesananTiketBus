@@ -20,7 +20,7 @@ namespace PemesananTiketBus.View
         {
             InitializeComponent();
             InitListView();
-            radioButtonSemua.Checked = true;
+            radioButtonSemua.Checked = true; // tampilkan semua data pembayaran saat form laporan dibuka
             LoadData();
         }
         private void InitListView()
@@ -36,17 +36,19 @@ namespace PemesananTiketBus.View
             listLaporan.Columns.Add("Nama Pelanggan", 130, HorizontalAlignment.Center);
             listLaporan.Columns.Add("Total Bayar", 80, HorizontalAlignment.Center);
         }
+
+        // load data dan tampilkan ke listview
         private void LoadData()
         {
             listLaporan.Items.Clear();
-            if(radioButtonSemua.Checked)
-            {
+            if(radioButtonSemua.Checked) 
+            { // cari semua data pembayaran
                 listOfPembayaran = controller.ReadAll();
             } else if(radioButtonID.Checked && !string.IsNullOrEmpty(textIDPembayaran.Text))
-            {
+            { // cari data pembayaran berdasarkan id pembayaran
                 listOfPembayaran = controller.ReadById(Convert.ToInt32(textIDPembayaran.Text));
             } else if(radioButtonNama.Checked)
-            {
+            { // cari data pembayaran berdasarkan nmaa pelanggan
                 listOfPembayaran = controller.ReadByNama(textNamaPelanggan.Text);
             }
             foreach (var item in listOfPembayaran)
@@ -66,17 +68,20 @@ namespace PemesananTiketBus.View
                        MessageBoxIcon.Exclamation);
         }
 
+        // saat tekan tombol enter pada keyboard sama saja menekan tombol Tampilkan Data
         private void textIDPembayaran_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) btnTampilkanData.PerformClick();
         }
 
+        // saat tekan tombol enter pada keyboard sama saja menekan tombol Tampilkan Data
         private void textNamaPelanggan_KeyUp(object sender, KeyEventArgs e)
         {
 
             if (e.KeyCode == Keys.Enter) btnTampilkanData.PerformClick();
         }
 
+        // button untuk menampikan data pembayaran
         private void btnTampilakData_Click(object sender, EventArgs e)
         {
             LoadData();
