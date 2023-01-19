@@ -40,7 +40,7 @@ namespace PemesananTiketBus.View
             lvwDataBus.Columns.Add("No.", 35, HorizontalAlignment.Center);
             lvwDataBus.Columns.Add("ID", 75, HorizontalAlignment.Center);
             lvwDataBus.Columns.Add("Nama", 200, HorizontalAlignment.Left);
-            lvwDataBus.Columns.Add("Rute", 90, HorizontalAlignment.Center);
+            lvwDataBus.Columns.Add("Rute", 115, HorizontalAlignment.Center);
             lvwDataBus.Columns.Add("Harga", 90, HorizontalAlignment.Center);
         }
 
