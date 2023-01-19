@@ -117,7 +117,7 @@ namespace PemesananTiketBus.Model.Repository
         {
             var items = new List<Pelanggan>();
             // deklarasi perintah SQL
-            string sql = @"select idPelanggan, nama, no_tlp, alamat, email from Pelanggan order by nama";
+            string sql = @"select idPelanggan, nama, no_tlp, alamat, email from Pelanggan order by idPelanggan";
 
             // membuat objek command menggunakan blok using
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
