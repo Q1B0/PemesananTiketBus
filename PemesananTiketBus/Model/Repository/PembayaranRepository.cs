@@ -51,6 +51,34 @@ namespace PemesananTiketBus.Model.Repository
 			return result;
 		}
 
+		public int Delete(Pembayaran pembayaran)
+		{
+			int result = 0;
+
+			// deklarasi perintah SQL
+			string sql = @"delete from Pembayaran
+						   where idPembayaran = @idPembayaran";
+
+			// membuat objek command menggunakan blok using
+			using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+			{
+				// mendaftarkan parameter dan mengeset nilainya
+				cmd.Parameters.AddWithValue("@idPembayaran", pembayaran.IDPembayaran);
+
+				try
+				{
+					// jalankan perintah DELETE dan tampung hasilnya ke dalam variabel result
+					result = cmd.ExecuteNonQuery();
+				}
+				catch (Exception ex)
+				{
+					System.Diagnostics.Debug.Print("Delete error: {0}", ex.Message);
+				}
+			}
+
+			return result;
+		}
+
 		public List<Pembayaran> ReadAll()
 		{
 			var items = new List<Pembayaran>();
@@ -109,7 +137,6 @@ namespace PemesananTiketBus.Model.Repository
 
 			return items;
 		}
-		// pengecualian, males
 		public List<Pembayaran> ReadById(int idPembayaran)
 		{
 			var items = new List<Pembayaran>();

@@ -60,6 +60,40 @@ namespace PemesananTiketBus.Controller
             }
             return result;
         }
+        public int Delete(Pembayaran pembayaran)
+        {
+            int result = 0;
+
+            // cek nilai id Pembayaran yang diinputkan tidak boleh kosong
+            if (string.IsNullOrEmpty(pembayaran.IDPembayaran))
+            {
+                MessageBox.Show("ID Pembayaran harus diisi !!!", "Peringatan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            // membuat objek context menggunakan blok using
+            using (DbContext context = new DbContext())
+            {
+                // membuat objek dari class repository
+                _repository = new PembayaranRepository(context);
+
+                // panggil method Delete class repository untuk menghapus data
+                result = _repository.Delete(pembayaran);
+            }
+
+            if (result > 0)
+            {
+                MessageBox.Show("Data Tiket berhasil dihapus !", "Informasi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Data Tiket gagal dihapus !!!", "Peringatan",
+                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            return result;
+        }
         public List<Pembayaran> ReadAll()
         {
             var items = new List<Pembayaran>();

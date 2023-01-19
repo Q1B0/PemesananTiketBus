@@ -44,6 +44,7 @@ namespace PemesananTiketBus.View
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listPembayaran = new System.Windows.Forms.ListView();
             this.btnLaporan = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,6 +171,7 @@ namespace PemesananTiketBus.View
             this.listPembayaran.Size = new System.Drawing.Size(484, 152);
             this.listPembayaran.TabIndex = 0;
             this.listPembayaran.UseCompatibleStateImageBehavior = false;
+            this.listPembayaran.SelectedIndexChanged += new System.EventHandler(this.listPembayaran_SelectedIndexChanged);
             // 
             // btnLaporan
             // 
@@ -181,11 +183,22 @@ namespace PemesananTiketBus.View
             this.btnLaporan.UseVisualStyleBackColor = true;
             this.btnLaporan.Click += new System.EventHandler(this.btnLaporan_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(374, 200);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(127, 23);
+            this.btnDelete.TabIndex = 47;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // FrmPembayaran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 441);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnLaporan);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnBayar);
@@ -226,5 +239,6 @@ namespace PemesananTiketBus.View
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnLaporan;
         private System.Windows.Forms.ListView listPembayaran;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
