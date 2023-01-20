@@ -46,7 +46,7 @@ namespace PemesananTiketBus.View
             Reset();
         }
 
-        
+        // Mthod mengambil data dari objek
         private void LoadData()
         {
             //Menghapus semua item yang ada di listTiket
@@ -87,7 +87,7 @@ namespace PemesananTiketBus.View
             }
         }
         
-
+        // Method untuk menentukan properti-properti dari ListView/tampilan  
         private void InitListView()
         {
             // Mengatur tampilan listview menjadi detail
