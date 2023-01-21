@@ -1,4 +1,4 @@
-﻿using PemesananTiketBus.Model.Context;
+using PemesananTiketBus.Model.Context;
 using PemesananTiketBus.Model.Entity;
 using System;
 using System.Collections.Generic;
@@ -12,196 +12,216 @@ namespace PemesananTiketBus.Controller
 {
     public class BusController
     {
-        // deklarasi objek repository
+        // Deklarasi objek _repository sebagai objek dari kelas BusRepository
         private BusRepository _repository;
 
-        // method untuk membuat data
+        // Method untuk menambah data bus baru
         public int Create(Bus bus)
         {
             int result = 0;
 
-            // cek id yang diinputkan tidak boleh kosong
+            // Validasi input ID bus
             if (string.IsNullOrEmpty(bus.IDBus))
             {
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // cek nama yang diinputkan tidak boleh kosong
+            // Validasi input nama bus
             if (string.IsNullOrEmpty(bus.Nama))
             {
                 MessageBox.Show("Nama harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // cek rute yang diinputkan tidak boleh kosong
+            // Validasi input rute bus
             if (string.IsNullOrEmpty(bus.Rute))
             {
                 MessageBox.Show("Rute harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
             
+            // Validasi input harga bus
             if (bus.Harga == 0)
             {
                 MessageBox.Show("Harga harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // membuat objek context menggunakan blok using
+            // Menggunakan blok using untuk membuat objek context dan repository
             using (DbContext context = new DbContext())
             {
-                // membuat objek class repository
+                // Membuat objek repository
                 _repository = new BusRepository(context);
 
-                // panggil method Create class repository untuk menambahkan data
+                // Menambahkan data bus ke dalam database
                 result = _repository.Create(bus);
             }
 
+            //Menampilkan informasi hasil operasi
             if (result > 0)
             {
                 MessageBox.Show("Data Bus berhasil disimpan !", "Informasi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Data Bus gagal disimpan !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
+            // Return hasil dari operasi create (berhasil atau tidak)
             return result;
         }
 
-        // method untuk mengupdate data
+        // Method untuk mengupdate data bus
         public int Update(Bus bus)
         {
             int result = 0;
 
-            // cek id yang diinputkan tidak boleh kosong
+            // Validasi input ID bus
             if (string.IsNullOrEmpty(bus.IDBus))
             {
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // cek nama yang diinputkan tidak boleh kosong
+            // Validasi input nama bus
             if (string.IsNullOrEmpty(bus.Nama))
             {
                 MessageBox.Show("Nama harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // cek rute yang diinputkan tidak boleh kosong
+            //Validasi input rute bus
             if (string.IsNullOrEmpty(bus.Rute))
             {
                 MessageBox.Show("Rute harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
+            // Validasi input harga bus
             if (bus.Harga == 0)
             {
                 MessageBox.Show("Harga harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return 0;
             }
 
-            // membuat objek context menggunakan blok using
+            // Membuat objek baru dari kelas DbContext untuk digunakan dalam koneksi ke database
             using (DbContext context = new DbContext())
             {
-                // membuat objek dari class repository
+                // Membuat objek baru dari kelas BusRepository dengan parameter 
+                // context yang digunakan untuk koneksi ke database
                 _repository = new BusRepository(context);
 
-                // panggil method Update class repository untuk mengupdate data
+                // Menjalankan method update dari kelas BusRepository dengan parameter 
+                // objek bus yang akan diupdate
                 result = _repository.Update(bus);
             }
 
+            // Jika proses update berhasil dilakukan
             if (result > 0)
             {
+                // Menampilkan pesan informasi bahwa data bus berhasil diupdate
                 MessageBox.Show("Data Bus berhasil diupdate !", "Informasi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                // Menampilkan pesan peringatan bahwa data bus gagal diupdate
                 MessageBox.Show("Data Bus gagal diupdate !!!", "Peringatan",
-                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
+            // Return hasil dari operasi update (berhasil atau tidak)
             return result;
         }
 
-        // method untuk menghapus data
+        // Method untuk delet data bus
         public int Delete(Bus bus)
         {
+            // Inisialisasi variabel result dengan nilai 0
             int result = 0;
 
-            // cek id yang diinputkan tidak boleh kosong
+            // Cek apakah IDBus yang akan dihapus kosong atau tidak
             if (string.IsNullOrEmpty(bus.IDBus))
             {
+                // Jika IDBus kosong, menampilkan pesan peringatan
                 MessageBox.Show("ID Bus harus diisi !!!", "Peringatan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                // Mengembalikan nilai 0
                 return 0;
             }
 
-            // membuat objek context menggunakan blok using
+            // Membuat objek baru dari kelas DbContext untuk digunakan dalam koneksi ke database
             using (DbContext context = new DbContext())
             {
-                // membuat objek dari class repository
+                // Membuat objek baru dari kelas BusRepository dengan parameter 
+                // context yang digunakan untuk koneksi ke database
                 _repository = new BusRepository(context);
 
-                // panggil method Delete class repository untuk menghapus data
+                // Menjalankan method delete dari kelas BusRepository dengan 
+                // parameter objek bus yang akan dihapus
                 result = _repository.Delete(bus);
             }
 
+            // Jika proses delete berhasil dilakukan
             if (result > 0)
             {
+                // Menampilkan pesan informasi bahwa data bus berhasil dihapus
                 MessageBox.Show("Data Bus berhasil dihapus !", "Informasi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                // Menampilkan pesan peringatan bahwa data bus gagal dihapus
                 MessageBox.Show("Data Bus gagal dihapus !!!", "Peringatan",
-                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
             return result;
         }
 
-        // method untuk menampilkan semua data
         public List<Bus> ReadAll()
         {
             var items = new List<Bus>();
-
-            // membuat objek context menggunakan blok using
             using(DbContext context = new DbContext())
             {
-                // membuat objek dari class repository
                 _repository = new BusRepository(context);
-
-                // panggil method
                 items = _repository.ReadAll();
             }
 
+            // Mengembalikan nilai 0
             return items;
         }
 
-        // method untuk menampilkan data berdasarkan id
         public Bus ReadById(int idBus)
         {
+            // Inisialisasi objek item dengan nilai null
             Bus item = null;
 
-            // membuat objek context menggunakan blok using
+            // Membuat objek baru dari kelas BusRepository dengan parameter 
+            // context yang digunakan untuk koneksi ke database
             using (DbContext context = new DbContext())
             {
-                // membuat objek dari class repository
+                // Membuat objek baru dari kelas BusRepository dengan parameter 
+                // context yang digunakan untuk koneksi ke database
                 _repository = new BusRepository(context);
 
-                // panggil method berdasarkan idBus
+                // Menjalankan method ReadById dari kelas BusRepository dengan parameter idBus yang akan dicari
                 item = _repository.ReadById(idBus);
             }
-
+            
+            // Mengembalikan nilai 0
             return item;
         }
 
