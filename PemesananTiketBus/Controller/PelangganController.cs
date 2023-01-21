@@ -12,13 +12,15 @@ namespace PemesananTiketBus.Controller
 {
     public class PelangganController
     {
+        // deklarasi objek repository
         private PelangganRepository _repository;
 
+        // method untuk membuat data
         public int Create(Pelanggan pelanggan)
         {
             int result = 0;
 
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.IdPelanggan))
             {
                 MessageBox.Show("ID Pelanggan harus diisi !!!", "Peringatan",
@@ -34,7 +36,7 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
-            // cek angkatan yang diinputkan tidak boleh kosong
+            // cek nomor telepon yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.No_tlp))
             {
                 MessageBox.Show("Nomor Telepon harus diisi !!!", "Peringatan",
@@ -42,6 +44,7 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
+            // cek alamat yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.Alamat))
             {
                 MessageBox.Show("Alamat harus diisi !!!", "Peringatan",
@@ -72,11 +75,12 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk mengupdate data
         public int Update(Pelanggan pelanggan)
         {
             int result = 0;
 
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.IdPelanggan))
             {
                 MessageBox.Show("ID Pelanggan harus diisi !!!", "Peringatan",
@@ -92,7 +96,7 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
-            // cek angkatan yang diinputkan tidak boleh kosong
+            // cek nomor telepon yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.No_tlp))
             {
                 MessageBox.Show("Nomor Telepon harus diisi !!!", "Peringatan",
@@ -100,6 +104,7 @@ namespace PemesananTiketBus.Controller
                 return 0;
             }
 
+            // cek alamat yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.Alamat))
             {
                 MessageBox.Show("Alamat harus diisi !!!", "Peringatan",
@@ -130,11 +135,12 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk menghapus data
         public int Delete(Pelanggan pelanggan)
         {
             int result = 0;
 
-            // cek nilai npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(pelanggan.IdPelanggan))
             {
                 MessageBox.Show("ID Pelanggan harus diisi !!!", "Peringatan",
@@ -165,24 +171,36 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk menampilkan semua data
         public List<Pelanggan> ReadAll()
         {
             var items = new List<Pelanggan>();
+
+            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new PelangganRepository(context);
+
+                // panggil method
                 items = _repository.ReadAll();
             }
 
             return items;
         }
 
+        // method untuk menampilkan data berdasarkan id
         public Pelanggan ReadById(int idPelanggan)
         {
             Pelanggan item = null;
+
+            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new PelangganRepository(context);
+
+                // panggil method berdasarkan idPelanggan
                 item = _repository.ReadById(idPelanggan);
             }
 

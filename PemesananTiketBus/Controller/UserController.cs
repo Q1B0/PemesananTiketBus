@@ -19,7 +19,7 @@ namespace PemesananTiketBus.Controller
 
         public bool IsValidUser(string userName, string password)
         {
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek username yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(userName))
             {
                 MessageBox.Show("User name harus diisi !!!", "Peringatan",
@@ -27,14 +27,14 @@ namespace PemesananTiketBus.Controller
                 return false;
             }
 
-            // cek nama yang diinputkan tidak boleh kosong
+            // cek password yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Password harus diisi !!!", "Peringatan",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-
+            
             bool isValidUser = false;
 
             // membuat objek context menggunakan blok using
@@ -43,7 +43,7 @@ namespace PemesananTiketBus.Controller
                 // membuat objek class repository
                 _repository = new UserRepository(context);
 
-                // panggil method Create class repository untuk menambahkan data
+                // panggil method IsValidUser class repository untuk mengecek apakah user dan password benar
                 isValidUser = _repository.IsValidUser(userName, password);
             }
 

@@ -12,7 +12,10 @@ namespace PemesananTiketBus.Controller
 {
     public class BusController
     {
+        // deklarasi objek repository
         private BusRepository _repository;
+
+        // method untuk membuat data
         public int Create(Bus bus)
         {
             int result = 0;
@@ -71,6 +74,7 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk mengupdate data
         public int Update(Bus bus)
         {
             int result = 0;
@@ -129,6 +133,7 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk menghapus data
         public int Delete(Bus bus)
         {
             int result = 0;
@@ -163,24 +168,37 @@ namespace PemesananTiketBus.Controller
             }
             return result;
         }
+
+        // method untuk menampilkan semua data
         public List<Bus> ReadAll()
         {
             var items = new List<Bus>();
+
+            // membuat objek context menggunakan blok using
             using(DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new BusRepository(context);
+
+                // panggil method
                 items = _repository.ReadAll();
             }
 
             return items;
         }
 
+        // method untuk menampilkan data berdasarkan id
         public Bus ReadById(int idBus)
         {
             Bus item = null;
+
+            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new BusRepository(context);
+
+                // panggil method berdasarkan idBus
                 item = _repository.ReadById(idBus);
             }
 

@@ -13,7 +13,10 @@ namespace PemesananTiketBus.Controller
 {
     public class TiketController
     {
+        // deklarasi objek repository
         private TiketRepository _repository;
+
+        // method untuk cek input data
         private bool Validate(Tiket tiket)
         {
             // cek npm yang diinputkan tidak boleh kosong
@@ -32,8 +35,7 @@ namespace PemesananTiketBus.Controller
                 return false;
             }
 
-
-
+            // cek jumlah tiket yang diinputkan tidak boleh kosong
             if (tiket.JumlahTiket == 0)
             {
                 MessageBox.Show("Jumlah tiket harus diisi !!!", "Peringatan",
@@ -43,12 +45,14 @@ namespace PemesananTiketBus.Controller
 
             return true;
         }
+
+        // method untuk membuat data
         public int Create(Tiket tiket)
         {
             int result = 0;
-            if (!Validate(tiket)) return 0;
 
-            
+            // panggil method untuk pengecekan
+            if (!Validate(tiket)) return 0;
 
             // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
@@ -73,9 +77,12 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk mengupdate data
         public int Update(Tiket tiket)
         {
             int result = 0;
+
+            // panggil method untuk pengecekan
             if (!Validate(tiket)) return 0;
 
 
@@ -102,11 +109,12 @@ namespace PemesananTiketBus.Controller
             return result;
         }
 
+        // method untuk menghapus data 
         public int Delete(Tiket tiket)
         {
             int result = 0;
 
-            // cek nilai npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(tiket.IDTiket))
             {
                 MessageBox.Show("ID Tiket harus diisi !!!", "Peringatan",
@@ -136,24 +144,37 @@ namespace PemesananTiketBus.Controller
             }
             return result;
         }
+
+        // method untuk menampilkan semua data
         public List<Tiket> ReadAll()
         {
             var items = new List<Tiket>();
+
+            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new TiketRepository(context);
+
+                // panggil method
                 items = _repository.ReadAll();
             }
 
             return items;
         }
 
+        // method untuk menampilkan data berdasarkan id
         public Tiket ReadById(int ticketId)
         {
             Tiket item = null;
+
+            // membuat objek context menggunakan blok using
             using (DbContext context = new DbContext())
             {
+                // membuat objek dari class repository
                 _repository = new TiketRepository(context);
+
+                // panggil method berdasarkan id Tiket
                 item = _repository.ReadById(ticketId);
             }
             return item;
