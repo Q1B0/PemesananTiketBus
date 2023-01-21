@@ -19,7 +19,7 @@ namespace PemesananTiketBus.Controller
         // method untuk cek input data
         private bool Validate(Tiket tiket)
         {
-            // cek npm yang diinputkan tidak boleh kosong
+            // cek id yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(tiket.IDTiket))
             {
                 MessageBox.Show("ID Tiket harus diisi !!!", "Peringatan",
@@ -27,7 +27,7 @@ namespace PemesananTiketBus.Controller
                 return false;
             }
 
-            // cek nama yang diinputkan tidak boleh kosong
+            // cek keterangan yang diinputkan tidak boleh kosong
             if (string.IsNullOrEmpty(tiket.Keterangan))
             {
                 MessageBox.Show("Keterangan diisi !!!", "Peringatan",
