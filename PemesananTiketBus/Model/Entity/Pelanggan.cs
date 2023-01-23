@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PemesananTiketBus.Model.Entity
 {
+    // Deklarasi kelas Pelanggan
     public class Pelanggan
     {
+        // Membuat properti yang dapat diakses diluar kelas
         public string IdPelanggan { get; set; }
         public string Nama { get; set; }
         public string No_tlp { get; set; }
