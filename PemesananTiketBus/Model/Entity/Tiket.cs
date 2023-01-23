@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PemesananTiketBus.Model.Entity
 {
+    // Deklasrasi kelas Tiket
     public class Tiket
     {
+        // Membuat properti yang dapet diakses di luar kelas
         public string IDTiket { get; set; }
         public DateTime TanggalTiket { get; set; }
         public DateTime TanggalBerangkat { get; set; }
